@@ -15,11 +15,10 @@ export default class Bishop extends Piece {
             {dr: 1, dc: -1},  // Down-left
             {dr: 1, dc: 1}    // Down-right
         ];
-
         let currentSquare = board.findPiece(this);
         let row = currentSquare.row;
         let col = currentSquare.col;
-        const moves = [];
+        const availableMoves = [];
 
         // For each direction, keep moving until the edge of the board is reached
         for (let direction of directions) {
@@ -27,12 +26,12 @@ export default class Bishop extends Piece {
             let currentCol = col + direction.dc;
 
             while (currentRow >= 0 && currentRow < 8 && currentCol >= 0 && currentCol < 8) {
-                moves.push(new Square(currentRow, currentCol));
+                availableMoves.push(new Square(currentRow, currentCol));
                 currentRow += direction.dr;
                 currentCol += direction.dc;
             }
         }
-        return moves;
+        return availableMoves;
     }
 }
 
